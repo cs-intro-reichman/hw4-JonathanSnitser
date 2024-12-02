@@ -18,13 +18,64 @@ public class MyString {
 
     /** Returns the lowercase version of the given string. */
     public static String lowerCase(String str) {
-        // Replace the following statement with your code
-        return null;
+        char c;
+        String newStr = "";
+        for (int i = 0; i < str.length(); i++) {
+            c= str.charAt(i);
+            if (c > 64 && c < 91) {
+                c += 32;
+                newStr = newStr + c;
+            } else {
+                newStr = newStr + c;
+            }
+        }
+        return newStr;
     }
 
     /** If str1 contains str2, returns true; otherwise returns false. */
     public static boolean contains(String str1, String str2) {
-        // Replace the following statement with your code
-        return false;
+        char c1, c2;
+        boolean contains = false;
+        if (str2 == "") {
+            return true;
+        }
+        c2 = str2.charAt(0);
+        int j = 0;
+        c1 = str1.charAt(j);
+        while (c2 != c1 && j < str1.length()) {
+            j++;
+            if (j < str1.length()) {
+                c1 = str1.charAt(j);
+                
+            }
+            if (c2 == c1) {
+                if (str1.charAt(j+1) != str2.charAt(1)) { //makes sure it is not just one letter that fits.
+                    j++;
+                    c1 = str1.charAt(j);
+                }
+            }
+         }
+        if (c2 != c1) {
+            return false;
+        }
+        for (int i = 0; i < str2.length(); i++){
+            c2 = str2.charAt(i);
+            c1 = str1.charAt(j);
+
+            if (c2 == c1) {
+                contains = true;
+            }
+            if (c2 != c1) {
+                contains = false;
+                break;
+            }
+            j++;
+            if (j > str1.length() -1) {
+                return false;
+            }
+        }
+
+        
+        return contains;
     }
 }
